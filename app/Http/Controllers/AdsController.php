@@ -25,8 +25,13 @@ class AdsController extends Controller
     {
         $valid = Carbon::now()->addMonth(1);
 
-        Ad::create([
-            'user_id'     => auth()->id(),
+        // Ad::create([
+        //     'user_id'     => auth()->id(),
+        //     'text'        => request('text'),
+        //     'valid_until' => $valid,
+        // ]);
+
+        auth()->user()->ads()->create([
             'text'        => request('text'),
             'valid_until' => $valid,
         ]);
